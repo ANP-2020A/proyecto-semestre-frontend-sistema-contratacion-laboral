@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+/** React, { useEffect, useState } from 'react';
 import { Skeleton, Card, Col, Row, Radio, Typography, Button } from 'antd';
 import Routes from '../constants/routes';
 import { Link } from 'react-router-dom';
@@ -90,3 +90,4 @@ const ArticleList = ( props ) => {
 ;
 
 export default ArticleList;
+**/
