@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/**import React, { useState } from 'react';
 import API from '../data';
 import { translateMessage } from '../utils/translateMessage';
 import ArticleList from '../components/ArticleList';
@@ -12,6 +12,7 @@ import { mutate } from 'swr';
 /**
  * Fetch Articles from DB
  */
+/**
 export const fetchArticles = async() => {
   // console.log( `Show data fetched. Articles: ${ JSON.stringify( articles ) }` );
 
@@ -23,6 +24,7 @@ export const fetchArticles = async() => {
  * @param props
  * @constructor
  */
+/**
 const Articles = ( props ) => {
 
   const [ visible, setVisible ] = useState( false );
@@ -37,6 +39,7 @@ const Articles = ( props ) => {
    * Fetches all the articles and refreshes the list
    * Closes the modal
    */
+/**
   const afterCreate = async() => {
     try {
       // show skeleton
@@ -99,3 +102,4 @@ const Articles = ( props ) => {
 
 
 export default Articles;
+**/
