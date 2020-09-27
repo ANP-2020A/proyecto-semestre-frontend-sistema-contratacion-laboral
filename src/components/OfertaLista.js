@@ -43,7 +43,7 @@ const OfertaLista = (props) => {
 
     return (
         <>
-            {props.categories && (
+            {props.areas && (
                 <Row justify="center">
                     <Col>
                         <Radio.Group
@@ -52,9 +52,9 @@ const OfertaLista = (props) => {
                             onChange={handleChangeCategory}
                         >
                             <Radio.Button value="all">Todas</Radio.Button> )
-                            {props.categories.map((category, index) => (
-                                <Radio.Button value={category.id} key={index}>
-                                    {category.name}
+                            {props.areas.map((area, index) => (
+                                <Radio.Button value={area.id} key={index}>
+                                    {area.name}
                                 </Radio.Button>
                             ))}
                         </Radio.Group>

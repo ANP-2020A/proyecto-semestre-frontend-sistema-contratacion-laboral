@@ -20,7 +20,8 @@ const privateRoutes = {
   LOGOUT: '/logout',
   LOGOUTEMPRESA: '/logoutEmpresa',
   PRIVATE: '/privada',
-  ARTICLE_ID: '/articulo/:id'
+  ARTICLE_ID: '/articulo/:id',
+  EXPERIENCIAS: '/experiencias'
 };
 
 const Routes = {

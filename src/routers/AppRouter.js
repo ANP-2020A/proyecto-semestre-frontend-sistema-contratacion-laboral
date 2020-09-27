@@ -24,6 +24,7 @@ const AsyncHome = loadable( () => import( '../pages/Index' ), loadableOptions );
 const AsyncLogin = loadable( () => import( '../pages/Login' ), loadableOptions );
 const AsyncRegister = loadable( () => import( '../pages/Register' ), loadableOptions );
 const AsyncPrivate = loadable( () => import( '../pages/Private' ), loadableOptions );
+const AsyncExperiencia = loadable( () => import( '../pages/Experiencias' ), loadableOptions );
 const AsyncArticles = loadable( () => import( '../pages/Ofertas' ), loadableOptions );
 const AsyncArticle = loadable( () => import( '../pages/Article' ), loadableOptions );
 const AsyncAbout = loadable( () => import( '../pages/About' ), loadableOptions );
@@ -55,6 +56,7 @@ const AppRouter = () => (
 
 
     <PrivateRoute path={ Routes.PRIVATE } component={ AsyncPrivate } />
+    <PrivateRoute path={ Routes.EXPERIENCIAS } component={ AsyncExperiencia } />
     <PrivateRoute path={ Routes.ARTICLE_ID } component={ AsyncArticle } />
     <PrivateRoute path={ Routes.LOGOUT } component={ AsyncLogout } />
     <PrivateRoute path={ Routes.LOGOUTEMPRESA } component={ AsyncLogoutEmpresa } />
