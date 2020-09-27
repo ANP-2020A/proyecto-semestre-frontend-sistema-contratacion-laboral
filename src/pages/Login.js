@@ -10,6 +10,7 @@ import { translateMessage } from '../utils/translateMessage';
 import { Link } from 'react-router-dom';
 import '../styles/login.css';
 import ErrorList from '../components/ErrorList';
+import logo1 from '../images/logo1.PNG'
 
 const Login = () => {
   const { setAuthenticated, setCurrentUser } = useAuth();
@@ -36,8 +37,11 @@ const Login = () => {
     }
   };
 
+
   return (
     <>
+      <Link to={ Routes.HOME }><img className='logo1' src={ logo1 } alt='Profe a Tiempo'  /></Link>
+      <h2 className='t4'>Buscador de empleo</h2>
       {
         <Row justify='center' className='login'>
           <Col span={ 8 }>

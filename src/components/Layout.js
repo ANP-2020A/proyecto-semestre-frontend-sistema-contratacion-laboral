@@ -9,6 +9,7 @@ import { FacebookOutlined, InstagramOutlined, GithubOutlined, MailOutlined, What
 import logo from '../images/logo.PNG'
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import empresa from "../images/empresa.PNG";
 
 
 const Header = Layout.Header;
@@ -34,8 +35,7 @@ const MainLayout = props => {
             <Header className='header'>
               <Row type='flex' justify='space-between' align='bottom'>
                 <Col xs={ 24 } md={ 6 } className='logo-wrapper'>
-                  <a href={ process.env.REACT_APP_DOMAIN }>
-                    <img className='logo' src={ logo } alt='Grupo Menta' /></a>
+                  <Link to={ Routes.HOME }><img className='logo' src={ logo } alt='Profe a Tiempo'  /></Link>
                 </Col>
 
                 <Col md={ 14 } align='right' className='main-menu'>
@@ -107,9 +107,7 @@ const MainLayout = props => {
                  } }
                  className='logo-menta'>
               Elaborado por: <br />
-              <a href='' rel='noopener noreferrer' target='_blank'>
-                <img src={ logo } alt='Profe a Tiempo' height={ 50 } />
-              </a>
+              <Link to={ Routes.HOME }><img className='logo' src={ logo } alt='Profe a Tiempo'  /></Link>
             </Col>
 
             <Col xs={ {
@@ -122,12 +120,12 @@ const MainLayout = props => {
                  } }
                  className='contact-links'>
               <p><strong>Contáctanos</strong></p>
-              <p><MailOutlined /> <a href='mailto:chalo.salvador@grupomenta.com'>chalo.salvador@grupomenta.com</a></p>
+              <p><MailOutlined /> <a href='mailto:bryan.olivares@epn.edu.ec'>bryan.olivares@epn.edu.ec</a></p>
               <p><WhatsAppOutlined /> <a href='https://wa.me/593984794808' target='_blank' rel='noopener noreferrer'>+593
                 9-8479-4808</a></p>
-              <p><GithubOutlined /> <a href='https://github.com/chalosalvador'
+              <p><GithubOutlined /> <a href='https://github.com/Andres12309'
                                        target='_blank'
-                                       rel='noopener noreferrer'>@chalosalvador</a>
+                                       rel='noopener noreferrer'>@Andres12309</a>
               </p>
             </Col>
           </Row>

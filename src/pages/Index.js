@@ -1,7 +1,10 @@
 import React from 'react';
+import Routes from '../constants/routes';
+import Navigation from '../components/Navigation';
 import 'antd/dist/antd.css';
+
+import { Card, Col, Row } from 'antd';
 import { Carousel } from 'antd';
-import logo from '../images/logo.PNG'
 import OfertaLista from '../components/OfertaLista';
 import { useOfertaLista } from '../data/useOfertaLista';
 import ShowError from '../components/ShowError';
@@ -11,8 +14,12 @@ import imagen2 from '../images/imagen2.PNG'
 import imagen3 from '../images/imagen3.PNG'
 import postulante from '../images/postulante.PNG'
 import empresa from '../images/empresa.PNG'
+import {Link} from "react-router-dom";
 
 const HomePage = () => {
+
+    const { Meta } = Card;
+
   const ofertas = useOfertaLista();
 
     const contentStyle = {
@@ -44,13 +51,36 @@ const HomePage = () => {
             </div>
         </Carousel>
 
-        <a href='http://localhost:3000/ingreso' rel='noopener noreferrer' target='_blank'>
-            <img className='postulante' src={ postulante } alt='Profe a Tiempo' height={ 50 } />
-        </a>
 
-        <a href='http://localhost:3000/ingreso' rel='noopener noreferrer' target='_blank'>
-            <img className='empresa' src={ empresa } alt='Profe a Tiempo' height={ 50 } />
-        </a>
+        <div className="site-card-wrapper">
+            <Row gutter={16}>
+                <Col span={14}>
+                    <Card
+                        hoverable
+                           style={{ width: 260, marginLeft:180 }}
+                           cover={<Link to={ Routes.LOGIN }><img className='postulante' src={ postulante } alt='Profe a Tiempo' height={ 50 } /></Link>}
+                    >
+                        <Meta title="JobFTrue" description="Ecuentra tu empleo" />
+                    </Card>
+                </Col>
+                <Col span={5}>
+                    <Card hoverable
+                          style={{ width: 260, marginLeft:22}}
+                          cover={<Link to={ Routes.LOGIN }><img className='empresa' src={ empresa } alt='Profe a Tiempo' height={ 50 } /></Link>}
+                    >
+                        <Meta title="JobFTrue" description="Empresa" />
+                    </Card>
+                </Col>
+            </Row>
+        </div>
+
+
+
+
+
+
+
+
 
         <p className='t1'>Encuentra tu empleo</p>
         <p className='t2'>Empresa</p>
