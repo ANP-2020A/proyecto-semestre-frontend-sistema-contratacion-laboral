@@ -6,9 +6,10 @@ import Routes from '../constants/routes';
 import Navigation from './Navigation';
 import { Layout, Row, Col, Button, Popover } from 'antd';
 import { FacebookOutlined, InstagramOutlined, GithubOutlined, MailOutlined, WhatsAppOutlined } from '@ant-design/icons';
-import logo from '../images/logo-menta.png';
+import logo from '../images/logo.PNG'
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+
 
 const Header = Layout.Header;
 const Content = Layout.Content;
@@ -106,7 +107,7 @@ const MainLayout = props => {
                  } }
                  className='logo-menta'>
               Elaborado por: <br />
-              <a href='https://grupomenta.com' rel='noopener noreferrer' target='_blank'>
+              <a href='' rel='noopener noreferrer' target='_blank'>
                 <img src={ logo } alt='Profe a Tiempo' height={ 50 } />
               </a>
             </Col>
