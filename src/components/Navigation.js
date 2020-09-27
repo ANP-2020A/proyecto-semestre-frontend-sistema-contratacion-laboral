@@ -75,7 +75,7 @@ const Navigation = ( props ) => {
             ? <Menu.SubMenu icon={ <UserOutlined /> } title={ currentUser && currentUser.name }>
               <Menu.ItemGroup title='Item 1'>
                 <Menu.Item key='setting:1'>
-                  <Link to={ Routes.PERFIL } style={ linkStyle }>Datos personales</Link>
+                  <Link to={ Routes.EXPERIENCIAS } style={ linkStyle }>EXPERIENCIAS</Link>
                 </Menu.Item>
                 <Menu.Item key='setting:2'>Option 2</Menu.Item>
               </Menu.ItemGroup>
@@ -112,7 +112,7 @@ const Navigation = ( props ) => {
               ? <Menu.SubMenu icon={ <UserOutlined /> } title={ currentUser && currentUser.name }>
                 <Menu.ItemGroup title='Item 1'>
                   <Menu.Item key='setting:1'>
-                    <Link to={ Routes.PERFIL } style={ linkStyle }>Datos personales</Link>
+                    <Link to={ Routes.USERS } style={ linkStyle }>EXPERIENCIAS</Link>
                   </Menu.Item>
                   <Menu.Item key='setting:2'>Option 2</Menu.Item>
                 </Menu.ItemGroup>

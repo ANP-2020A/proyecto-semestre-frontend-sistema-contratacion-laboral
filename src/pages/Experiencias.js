@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import API from "../data";
 import { translateMessage } from "../utils/translateMessage";
-import OfertaLista from "../components/OfertaLista";
+import ExpLista from "../components/ExpLista";
 import ArticleForm from "../components/ArticleForm";
 import { Button, message, Skeleton, Row, Col } from "antd";
 import { useAuth } from "../providers/Auth";
-import { useAreaTrabajos } from "../data/useAreaTrabajos";
+//import { useAreaTrabajos } from "../data/useAreaTrabajos";
 import ShowError from "../components/ShowError";
 import { mutate } from "swr";
 
@@ -15,7 +15,7 @@ import { mutate } from "swr";
 export const fetchArticles = async () => {
     // console.log( `Show data fetched. Articles: ${ JSON.stringify( articles ) }` );
 
-    return await API.get("/ofertas");
+    return await API.get("/experiencias");
 };
 
 /**
@@ -23,13 +23,13 @@ export const fetchArticles = async () => {
  * @param props
  * @constructor
  */
-const Ofertas = (props) => {
+const Experiencias = (props) => {
     const [visible, setVisible] = useState(false);
-    const areasTrabajos = useAreaTrabajos();
+    //const areasTrabajos = useAreaTrabajos();
 
     const auth = useAuth();
 
-    console.log("categories", areasTrabajos);
+    //console.log("categories", areasTrabajos);
 
     /**
      * Executed after the form is submitted
@@ -68,22 +68,15 @@ const Ofertas = (props) => {
                         setVisible(true);
                     }}
                 >
-                    Nuevo artículo
+                    Agregar experiencia
                 </Button>
-            )}
 
-            <ArticleForm
-                categories={areasTrabajos.areas}
-                visible={visible}
-                update={false}
-                onSubmit={afterCreate}
-                onCancel={() => {
-                    setVisible(false);
-                }}
-            />
-            <OfertaLista areas={areasTrabajos.areas} />
+            )}
+            <div>
+                <ExpLista />
+            </div>
         </div>
     );
 };
 
-export default Ofertas;
+export default Experiencias;
