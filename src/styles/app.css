@@ -11,7 +11,7 @@ body {
 }
 
 .ant-layout {
-    background-color: red;
+    background-color: #2F4944;
     min-height: 100vh;
 }
 
@@ -133,13 +133,14 @@ body {
 
 .postulante{
     height: 200px;
-    width: 360px;
-    margin-left: 115px;
+    width: 260px;
+    /*margin-left: 115px;*/
 }
 
 .empresa{
     height: 200px;
-    margin-left: 160px;
+    width:260px;
+    /*margin-left: 160px;*/
 }
 
 .t1{
@@ -150,7 +151,7 @@ body {
 
 .t2{
     margin-top: -52px;
-    margin-left: 800px;
+    margin-left: 780px;
     font-size: 20px;
     color: yellow;
 }
