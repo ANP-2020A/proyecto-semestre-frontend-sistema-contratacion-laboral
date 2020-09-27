@@ -63,7 +63,7 @@ const Register = () => {
 
   return (
     <>
-      <Title style={ { textAlign: 'center' } }>Registro</Title>
+      <Title style={ { textAlign: 'center', color:"yellow" } }>Registrate como buscador de empleo </Title>
 
       <Row justify='center' className='login'>
         <Col span={ 8 }>

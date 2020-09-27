@@ -4,7 +4,9 @@
 
 const publicRoutes = {
   LOGIN: '/ingreso',
+  LOGINEMPRESA: '/ingresoEmpresa',
   REGISTER: '/registro',
+  REGISTEREMPRESA: '/registroEmpresa',
   OFERTAS: '/ofertas',
   PERFIL: '/user',
   USERS: '/usuarios',
@@ -16,6 +18,7 @@ const publicRoutes = {
 
 const privateRoutes = {
   LOGOUT: '/logout',
+  LOGOUTEMPRESA: '/logoutEmpresa',
   PRIVATE: '/privada',
   ARTICLE_ID: '/articulo/:id'
 };
