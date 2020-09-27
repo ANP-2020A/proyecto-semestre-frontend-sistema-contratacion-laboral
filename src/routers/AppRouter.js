@@ -28,7 +28,9 @@ const AsyncArticles = loadable( () => import( '../pages/Ofertas' ), loadableOpti
 const AsyncArticle = loadable( () => import( '../pages/Article' ), loadableOptions );
 const AsyncAbout = loadable( () => import( '../pages/About' ), loadableOptions );
 const AsyncLogout = loadable( () => import( '../pages/Logout' ), loadableOptions );
-
+const AsyncLoginEmpresa = loadable( () => import( '../pages/LoginEmpresa' ), loadableOptions );
+const AsyncLogoutEmpresa = loadable( () => import( '../pages/LogoutEmpresa' ), loadableOptions );
+const AsyncRegisterEmpresa = loadable( () => import( '../pages/RegisterEmpresa' ), loadableOptions );
 
 /**
  * Este es el componente que se encarga de renderizar el componente adecuado
@@ -45,13 +47,17 @@ const AppRouter = () => (
   <Switch>
     <PublicRoute exact path={ Routes.HOME } component={ AsyncHome } />
     <PublicRoute path={ Routes.LOGIN } component={ AsyncLogin } />
+    <PublicRoute path={ Routes.LOGINEMPRESA } component={ AsyncLoginEmpresa } />
     <PublicRoute path={ Routes.REGISTER } component={ AsyncRegister } />
+    <PublicRoute path={ Routes.REGISTEREMPRESA } component={ AsyncRegisterEmpresa } />
     <PublicRoute path={ Routes.OFERTAS } component={ AsyncArticles } />
     <PublicRoute path={ Routes.ABOUT } component={ AsyncAbout } />
+
 
     <PrivateRoute path={ Routes.PRIVATE } component={ AsyncPrivate } />
     <PrivateRoute path={ Routes.ARTICLE_ID } component={ AsyncArticle } />
     <PrivateRoute path={ Routes.LOGOUT } component={ AsyncLogout } />
+    <PrivateRoute path={ Routes.LOGOUTEMPRESA } component={ AsyncLogoutEmpresa } />
 
     <Route component={ NotFoundPage } />
   </Switch>

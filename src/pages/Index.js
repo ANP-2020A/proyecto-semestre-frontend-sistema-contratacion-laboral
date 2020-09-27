@@ -66,7 +66,7 @@ const HomePage = () => {
                 <Col span={5}>
                     <Card hoverable
                           style={{ width: 260, marginLeft:22}}
-                          cover={<Link to={ Routes.LOGIN }><img className='empresa' src={ empresa } alt='Profe a Tiempo' height={ 50 } /></Link>}
+                          cover={<Link to={ Routes.LOGINEMPRESA }><img className='empresa' src={ empresa } alt='Profe a Tiempo' height={ 50 } /></Link>}
                     >
                         <Meta title="JobFTrue" description="Empresa" />
                     </Card>
