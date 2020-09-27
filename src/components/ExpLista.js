@@ -47,7 +47,7 @@ const OfertaLista = (props) => {
         {title: 'Fecha Inicio', dataIndex: 'fechaInicio', key: 'fechaInicio'},
         {title: 'Fecha Finalización', dataIndex: 'fechaFinalizacion', key: 'fechaFinalizacion'},
         {title: 'Postulante', dataIndex: 'postulante', key: 'postulante'},
-        {title: 'Area Trabajo', dataIndex: 'areatrabajo', key: 'areatrabajo'},
+        //{title: 'Area Trabajo', dataIndex: 'areatrabajo', key: 'areatrabajo'},
         {
             title: 'Acción',
             dataIndex: '',
