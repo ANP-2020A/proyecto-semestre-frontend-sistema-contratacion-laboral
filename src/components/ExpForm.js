@@ -15,7 +15,7 @@ function getBase64(file, callback) {
     reader.readAsDataURL(file);
 }
 
-const ArticleForm = ({
+const ExpForm = ({
                          visible,
                          update,
                          onSubmit,
@@ -26,6 +26,10 @@ const ArticleForm = ({
     const [imageUrl, setImageUrl] = useState(null);
     const [fileList, setFileList] = useState([]);
     const [isSaving, setIsSaving] = useState(false);
+
+    const [fechaInicio, setFechaInicio] = useState(null);
+    const [fechaFin, setFechaFin] = useState(null);
+
     /**
      * onCreate article
      * Called when the user clicks on button to create article
@@ -41,16 +45,15 @@ const ArticleForm = ({
 
                 // use form data to be able to send a file to the server
                 const data = new FormData();
-                data.append('image', values.image[0]);
-                data.append('titulo_oferta', values.titulo_oferta);
-                data.append('descripcion_oferta', values.descripcion_oferta);
-                data.append('fecha_publicacion', values.fecha_publicacion);
-                data.append('link_google_forms', values.link_google_forms);
-                data.append('area_id', values.area_id);
+                data.append('nombre_empresa', values.area_trabajo);
+                data.append('area_trabajo', values.area_trabajo);
+                data.append('lugar_trabajo', values.lugar_trabajo);
+                data.append('fecha_inicio', fechaInicio);
+                data.append('fecha_finalización', fechaFin);
                 //data.append( 'empresa_id', values.category_id );
 
                 try {
-                    await API.post('/ofertas', data); // post data to server
+                    await API.post('/experiencias', data); // post data to server
                     form.resetFields();
                     setFileList([]);
                     setImageUrl(null);
@@ -75,7 +78,7 @@ const ArticleForm = ({
         form.validateFields()
             .then(async (values) => {
                 try {
-                    await API.put('/ofertas', values); // post data to server
+                    await API.put('/experiencias', values); // post data to server
                     form.resetFields();
                     onSubmit();
                 } catch (error) {
@@ -97,54 +100,23 @@ const ArticleForm = ({
     //   getBase64( info.file, imageUrl => setImageUrl( imageUrl ) );
     // };
 
-    const normPhotoFile = e => {
-        console.log('Upload event:', e);
-        const file = e.file;
-        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-        if (!isJpgOrPng) {
-            message.error('La imagen debe tener formato JPG o PNG');
-            setFileList([]);
-            setImageUrl(null);
-            return null;
-        }
-        const isLt2M = file.size / 1024 / 1024 < 2;
-        if (!isLt2M) {
-            message.error('La imagen debe ser menor a 2MB');
-            setFileList([]);
-            setImageUrl(null);
-            return null;
-        }
-
-        if (file.status === 'removed') {
-            setFileList([]);
-            setImageUrl(null);
-            return null;
-        }
-
-        getBase64(e.file, imageUrl => setImageUrl(imageUrl));
-
-        if (Array.isArray(e)) {
-            return e;
-        }
-
-        console.log('e.file', e.file);
-        console.log('e.fileList', e.fileList);
-        setFileList([file]);
-
-        return e && [e.file];
-    };
-
-    const handleChangeCategory = () => {
-    };
 
     function onChange(date, dateString) {
         console.log(date, dateString);
+        setFechaInicio(dateString)
+
+    }
+
+    function onChange1(date, dateString) {
+        console.log(date, dateString);
+        setFechaFin(dateString)
+
     }
 
     return (
         <Modal
             visible={visible}
-            title='Crear nuevo oferta'
+            title='Agrega una experiencia'
             okText='Crear'
             confirmLoading={isSaving}
             cancelText='Cancelar'
@@ -159,101 +131,66 @@ const ArticleForm = ({
                 name='form_in_modal'
             >
                 <Form.Item
-                    name='titulo_oferta'
-                    label='Título'
+                    name='nombre_empresa'
+                    label='Empresa'
                     rules={[
                         {
                             required: true,
-                            message: 'Ingresa un título'
+                            message: 'Ingresa un empresa'
                         }
                     ]}
                 >
                     <Input/>
                 </Form.Item>
                 <Form.Item
-                    name='descripcion_oferta'
-                    label='Descripcion'
+                    name='area_trabajo'
+                    label='Area de trabajo'
                     rules={[
                         {
                             required: true,
-                            message: 'Ingresa una descripción'
+                            message: 'Ingresa una area de trabajo'
                         }
                     ]}
                 >
                     <Input/>
                 </Form.Item>
                 <Form.Item
-                    name='fecha_publicacion'
+                    name='lugar_trabajo'
+                    label='Dirección'
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Ingresa una direccion del trabajo'
+                        }
+                    ]}
+                >
+                    <Input/>
+                </Form.Item>
+                <Form.Item
+                    name='fecha_inicio'
+                    label='Fecha de inicio'
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Ingresa una fecha de inicio del trabajo'
+                        }
+                    ]}>
+                    <DatePicker onChange={onChange} />
+                </Form.Item>
+                <Form.Item
+                    name='fecha_finalización'
                     label='Fecha'
                     rules={[
                         {
                             required: true,
-                            message: 'Ingresa una fecha ha publicar'
+                            message: 'Ingresa una fecha de finalizacion del trabajo'
                         }
                     ]}>
-                    <Input/>
+                <DatePicker onChange={onChange1} />
                 </Form.Item>
-                <Form.Item
-                    name='link_google_forms'
-                    label='LinkTest'
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Ingresa una link'
-                        }
-                    ]}>
-                    <Input/>
-                </Form.Item>
-                <Form.Item name='image'
-                           label='Upload'
-                           valuePropName='fileList'
-                           getValueFromEvent={normPhotoFile}
-                           rules={[
-                               {
-                                   required: true,
-                                   message: 'Sube tu foto'
-                               }
-                           ]}
-                >
-                    <Upload name='files'
-                            accept='image/jpeg,image/png'
-                            listType='picture-card'
-                            multiple={false}
-                            showUploadList={false}
-                            beforeUpload={() => false}
-                        // onChange={ handleChangePhoto }
-                            fileList={fileList}
-                    >
-                        {imageUrl
-                            ? <img src={imageUrl} alt='Foto' style={{width: '80px'}}/>
-                            : <div>
-                                <PlusOutlined/>
-                                <div className='ant-upload-text'>Upload</div>
-                            </div>}
-                    </Upload>
-                </Form.Item>
-
-                <Form.Item name='area_id'
-                           label='Area'
-                           rules={[
-                               {
-                                   required: true,
-                                   message: 'Selecciona una Area'
-                               }
-                           ]}
-                >
-                    <Select style={{width: 120}} onChange={handleChangeCategory} loading={!categories}>
-                        {
-                            categories && categories.map((category, index) =>
-                                <Option value={category.id} key={index}>{category.area_trabajo}</Option>
-                            )
-                        }
-                    </Select>
-                </Form.Item>
-
             </Form>
         </Modal>
     );
 };
 
-export default ArticleForm;
+export default ExpForm;

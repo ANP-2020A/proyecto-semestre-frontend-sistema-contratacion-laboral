@@ -2,19 +2,19 @@ import React, {useEffect, useState} from "react";
 import {Skeleton, Card, Col, Row, Radio, Typography, Button, Table} from "antd";
 import Routes from "../constants/routes";
 import {Link} from "react-router-dom";
-import {useExpLista} from "../data/useExpLista";
+import {useEstudiosLista} from "../data/useEstudiosLista";
 import ShowError from "./ShowError";
 
 const {Text} = Typography;
 
-const ExpLista = (props) => {
-    const {experiencias, isLoading, isError, mutate} = useExpLista();
+const EstudiosLista = (props) => {
+    const {estudios, isLoading, isError, mutate} = useEstudiosLista();
     // const [ articles, setArticles ] = useState( props.articles );
 
     useEffect(() => {
         //   console.log( 'props.articles', props.articles );
         //   setArticles( props.articles );
-        console.log(props.experiencias);
+        console.log(props.estudios);
     }, []);
 
     const handleChangeCategory = (e) => {
@@ -61,7 +61,7 @@ const ExpLista = (props) => {
 
             <Row justify="center" gutter={30}>
                 {
-                    experiencias.map((experiencia, i) => (
+                    estudios.map((estudio, i) => (
                         <Table
                             columns={columns}
                             expandable={{
@@ -71,12 +71,12 @@ const ExpLista = (props) => {
                             dataSource={[
                                 {
                                     key: {i},
-                                    empresa: experiencia.nombre_empresa,
-                                    direccion: experiencia.lugar_trabajo,
-                                    fechaInicio: experiencia.fecha_inicio,
-                                    fechaFinalizacion: experiencia.fecha_finalizacion,
-                                    postulante: experiencia.nombre_postulante,
-                                    areatrabajo: experiencia.area_trabajo,
+                                    empresa: estudio.nombre_empresa,
+                                    direccion: estudio.lugar_trabajo,
+                                    fechaInicio: estudio.fecha_inicio,
+                                    fechaFinalizacion: estudio.fecha_finalizacion,
+                                    postulante: estudio.nombre_postulante,
+                                    areatrabajo: estudio.area_trabajo,
                                 }
                             ]}
                         />
@@ -103,4 +103,4 @@ const ExpLista = (props) => {
         </>
     );
 };
-export default ExpLista;
+export default EstudiosLista;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import API from "../data";
 import { translateMessage } from "../utils/translateMessage";
 import ExpLista from "../components/ExpLista";
-import ArticleForm from "../components/ArticleForm";
+import ExpForm from "../components/ExpForm";
 import { Button, message, Skeleton, Row, Col } from "antd";
 import { useAuth } from "../providers/Auth";
 //import { useAreaTrabajos } from "../data/useAreaTrabajos";
@@ -40,14 +40,14 @@ const Experiencias = (props) => {
         try {
             // show skeleton
             await mutate(
-                "/articles",
+                "/experiencias",
                 async (articles) => {
                     return { data: [{}, ...articles.data] };
                 },
                 false
             );
 
-            await mutate("/articles");
+            await mutate("/experiencias");
             setVisible(false); // close the modal
         } catch (error) {
             console.error(
@@ -72,6 +72,14 @@ const Experiencias = (props) => {
                 </Button>
 
             )}
+            <ExpForm
+                visible={visible}
+                update={false}
+                onSubmit={afterCreate}
+                onCancel={() => {
+                    setVisible(false);
+                }}
+            />
             <div>
                 <ExpLista />
             </div>

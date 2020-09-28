@@ -106,8 +106,7 @@ const Navigation = ( props ) => {
         }
 
 
-
-        {
+        {/**
           isAuthenticated
               ? <Menu.SubMenu icon={ <UserOutlined /> } title={ currentUser && currentUser.name }>
                 <Menu.ItemGroup title='Item 1'>
@@ -139,7 +138,7 @@ const Navigation = ( props ) => {
                         : <><LoginOutlined /> IngresarEmpresa</>
                   }
                 </Link>
-              </Menu.Item>
+              </Menu.Item>**/
         }
       </Menu>
     </>

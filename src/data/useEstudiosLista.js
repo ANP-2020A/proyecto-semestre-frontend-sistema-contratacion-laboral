@@ -1,12 +1,11 @@
 import useSWR from "swr";
 import API from "./index";
 
-export const useOfertaLista = () => {
-    const { data, error, mutate } = useSWR("/ofertas", API.fetcher);
-
+export const useEstudiosLista = () => {
+    const { data, error, mutate } = useSWR("/estudios", API.fetcher);
 
     return {
-        ofertas: data && data.data,
+        estudios: data && data.data,
         isLoading: !error && !data,
         isError: error,
         mutate,

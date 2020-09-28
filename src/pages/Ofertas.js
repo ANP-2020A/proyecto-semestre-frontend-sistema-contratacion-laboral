@@ -40,14 +40,14 @@ const Ofertas = (props) => {
         try {
             // show skeleton
             await mutate(
-                "/articles",
-                async (articles) => {
-                    return { data: [{}, ...articles.data] };
+                "/ofertas",
+                async (ofertas) => {
+                    return { data: [{}, ...ofertas.data] };
                 },
                 false
             );
 
-            await mutate("/articles");
+            await mutate("/ofertas");
             setVisible(false); // close the modal
         } catch (error) {
             console.error(
@@ -68,7 +68,7 @@ const Ofertas = (props) => {
                         setVisible(true);
                     }}
                 >
-                    Nuevo artículo
+                    Nuevo oferta
                 </Button>
             )}
 
