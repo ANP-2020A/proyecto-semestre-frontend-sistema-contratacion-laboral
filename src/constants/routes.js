@@ -8,7 +8,6 @@ const publicRoutes = {
   REGISTER: '/registro',
   REGISTEREMPRESA: '/registroEmpresa',
   OFERTAS: '/ofertas',
-  PERFIL: '/user',
   USERS: '/usuarios',
   USERS_ID: `/usuario/:id`,
   HOME: '/',
@@ -20,8 +19,10 @@ const privateRoutes = {
   LOGOUT: '/logout',
   LOGOUTEMPRESA: '/logoutEmpresa',
   PRIVATE: '/privada',
-  ARTICLE_ID: '/articulo/:id',
-  EXPERIENCIAS: '/experiencias'
+  PERFIL: '/user',
+  OFERTA_ID: '/oferta/:id',
+  EXPERIENCIAS: '/experiencias',
+  ESTUDIOS: '/estudios'
 };
 
 const Routes = {

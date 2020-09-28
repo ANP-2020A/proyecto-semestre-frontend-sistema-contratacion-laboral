@@ -73,14 +73,18 @@ const Navigation = ( props ) => {
         {
           isAuthenticated
             ? <Menu.SubMenu icon={ <UserOutlined /> } title={ currentUser && currentUser.name }>
-              <Menu.ItemGroup title='Item 1'>
+              <Menu.ItemGroup title='Ver'>
                 <Menu.Item key='setting:1'>
-                  <Link to={ Routes.EXPERIENCIAS } style={ linkStyle }>EXPERIENCIAS</Link>
+                  <Link to={ Routes.EXPERIENCIAS } style={ linkStyle }>Experiencias</Link>
                 </Menu.Item>
-                <Menu.Item key='setting:2'>Option 2</Menu.Item>
+                <Menu.Item key='Ver'>
+                  <Link to={ Routes.ESTUDIOS } style={ linkStyle }>Estudios</Link>
+                </Menu.Item>
               </Menu.ItemGroup>
-              <Menu.ItemGroup title='Item 2'>
-                <Menu.Item key='setting:3'>Option 3</Menu.Item>
+              <Menu.ItemGroup title='Actualizar'>
+                <Menu.Item key='setting:3'>
+                  <Link to={ Routes.USERS } style={ linkStyle }>Datos personales</Link>
+                </Menu.Item>
                 <Menu.Item key='setting:4'>Option 4</Menu.Item>
               </Menu.ItemGroup>
 

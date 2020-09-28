@@ -42,11 +42,12 @@ const EstudiosLista = (props) => {
     }
 
     const columns = [
-        {title: 'Empresa', dataIndex: 'empresa', key: 'empresa'},
-        {title: 'Direccion', dataIndex: 'direccion', key: 'direccion'},
+        {title: 'Institución', dataIndex: 'institucionn', key: 'institucionn'},
+        {title: 'Nivel de estudio', dataIndex: 'nivell', key: 'nivell'},
+        {title: 'Nivel ingles', dataIndex: 'nivelingles', key: 'nivelingles'},
         {title: 'Fecha Inicio', dataIndex: 'fechaInicio', key: 'fechaInicio'},
         {title: 'Fecha Finalización', dataIndex: 'fechaFinalizacion', key: 'fechaFinalizacion'},
-        {title: 'Postulante', dataIndex: 'postulante', key: 'postulante'},
+        //{title: 'Postulante', dataIndex: 'postulante', key: 'postulante'},
         //{title: 'Area Trabajo', dataIndex: 'areatrabajo', key: 'areatrabajo'},
         {
             title: 'Acción',
@@ -64,19 +65,14 @@ const EstudiosLista = (props) => {
                     estudios.map((estudio, i) => (
                         <Table
                             columns={columns}
-                            expandable={{
-                                expandedRowRender: record => <p style={{margin: 0}}>{record.areatrabajo}</p>,
-                                //rowExpandable: record => record.name !== 'Not Expandable',
-                            }}
                             dataSource={[
                                 {
                                     key: {i},
-                                    empresa: estudio.nombre_empresa,
-                                    direccion: estudio.lugar_trabajo,
+                                    institucionn: estudio.institucion,
+                                    nivell: estudio.nivel,
+                                    nivelingles: estudio.nivel_ingles,
                                     fechaInicio: estudio.fecha_inicio,
-                                    fechaFinalizacion: estudio.fecha_finalizacion,
-                                    postulante: estudio.nombre_postulante,
-                                    areatrabajo: estudio.area_trabajo,
+                                    fechaFinalizacion: estudio.fecha_inicio,
                                 }
                             ]}
                         />

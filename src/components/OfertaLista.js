@@ -72,7 +72,7 @@ const OfertaLista = (props) => {
                             <Card
                                 title={oferta.titulo_oferta}
                                 extra={
-                                    <Link to={Routes.ARTICLE_ID.replace(":id", oferta.id)}>
+                                    <Link to={Routes.OFERTA_ID.replace(":id", oferta.id)}>
                                         Más
                                     </Link>
                                 }

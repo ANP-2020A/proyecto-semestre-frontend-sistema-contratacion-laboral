@@ -15,13 +15,13 @@ function getBase64(file, callback) {
     reader.readAsDataURL(file);
 }
 
-const ExpForm = ({
-                         visible,
-                         update,
-                         onSubmit,
-                         onCancel,
-                         categories
-                     }) => {
+const EstudiosForm = ({
+                     visible,
+                     update,
+                     onSubmit,
+                     onCancel,
+                     categories
+                 }) => {
     const [form] = Form.useForm();
     const [imageUrl, setImageUrl] = useState(null);
     const [fileList, setFileList] = useState([]);
@@ -45,15 +45,15 @@ const ExpForm = ({
 
                 // use form data to be able to send a file to the server
                 const data = new FormData();
-                data.append('nombre_empresa', values.area_trabajo);
-                data.append('area_trabajo', values.area_trabajo);
-                data.append('lugar_trabajo', values.lugar_trabajo);
+                data.append('institucion', values.institucion);
+                data.append('nivel', values.nivel);
+                data.append('nivel_ingles', values.nivel_ingles);
                 data.append('fecha_inicio', fechaInicio);
                 data.append('fecha_finalización', fechaFin);
                 //data.append( 'empresa_id', values.category_id );
 
                 try {
-                    await API.post('/experiencias', data); // post data to server
+                    await API.post('/estudios', data); // post data to server
                     form.resetFields();
                     setFileList([]);
                     setImageUrl(null);
@@ -78,7 +78,7 @@ const ExpForm = ({
         form.validateFields()
             .then(async (values) => {
                 try {
-                    await API.put('/experiencias', values); // post data to server
+                    await API.put('/estudios', values); // post data to server
                     form.resetFields();
                     onSubmit();
                 } catch (error) {
@@ -116,7 +116,7 @@ const ExpForm = ({
     return (
         <Modal
             visible={visible}
-            title='Agrega una experiencia'
+            title='Agrega una registro academico'
             okText='Crear'
             confirmLoading={isSaving}
             cancelText='Cancelar'
@@ -131,40 +131,57 @@ const ExpForm = ({
                 name='form_in_modal'
             >
                 <Form.Item
-                    name='nombre_empresa'
-                    label='Empresa'
+                    name='institucion'
+                    label='Institución'
                     rules={[
                         {
                             required: true,
-                            message: 'Ingresa una empresa'
+                            message: 'Ingresa una institución'
                         }
                     ]}
                 >
                     <Input/>
                 </Form.Item>
                 <Form.Item
-                    name='area_trabajo'
-                    label='Area de trabajo'
+                    name='nivel'
+                    label='Nivel de estudio'
                     rules={[
                         {
                             required: true,
-                            message: 'Ingresa una area de trabajo'
+                            message: 'Seleciona un nivel de estudio'
                         }
                     ]}
                 >
-                    <Input/>
+                    <Select
+                        showSearch
+                        style={{ width: 200 }}
+                        placeholder="Nivel de ingles"
+                    >
+                        <Option value="Primaria">Primaria</Option>
+                        <Option value="Secundaria">Secundaria</Option>
+                        <Option value="Instiuto">Instiuto</Option>
+                        <Option value="Universitario">Universitario</Option>
+                    </Select>
                 </Form.Item>
                 <Form.Item
-                    name='lugar_trabajo'
-                    label='Dirección'
+                    name='nivel_ingles'
+                    label='Nivel de ingles'
                     rules={[
                         {
                             required: true,
-                            message: 'Ingresa una direccion del trabajo'
+                            message: 'Selecciona un nivel de ingles'
                         }
                     ]}
                 >
-                    <Input/>
+                    <Select
+                        showSearch
+                        style={{ width: 200 }}
+                        placeholder="Nivel de ingles"
+                    >
+                        <Option value="Basico">Basico</Option>
+                        <Option value="Intermedio">Intermedio</Option>
+                        <Option value="Avanzado">Avanzado</Option>
+                    </Select>
                 </Form.Item>
                 <Form.Item
                     name='fecha_inicio'
@@ -172,7 +189,7 @@ const ExpForm = ({
                     rules={[
                         {
                             required: true,
-                            message: 'Ingresa una fecha de inicio del trabajo'
+                            message: 'Elige la fecha de inicio del estudio'
                         }
                     ]}>
                     <DatePicker onChange={onChange} />
@@ -183,14 +200,14 @@ const ExpForm = ({
                     rules={[
                         {
                             required: true,
-                            message: 'Ingresa una fecha de finalizacion del trabajo'
+                            message: 'Elige la fecha de graduación'
                         }
                     ]}>
-                <DatePicker onChange={onChange1} />
+                    <DatePicker onChange={onChange1} />
                 </Form.Item>
             </Form>
         </Modal>
     );
 };
 
-export default ExpForm;
+export default EstudiosForm;
