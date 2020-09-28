@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Skeleton, Card, Col, Row, Radio, Typography, Button } from "antd";
+import React, {useEffect, useState} from "react";
+import {Skeleton, Card, Col, Row, Radio, Typography, Button, Pagination} from "antd";
 import Routes from "../constants/routes";
-import { Link } from "react-router-dom";
-import { useOfertaLista } from "../data/useOfertaLista";
+import {Link} from "react-router-dom";
+import {useOfertaLista} from "../data/useOfertaLista";
 import ShowError from "./ShowError";
 
-const { Text } = Typography;
+const {Text} = Typography;
 
 const OfertaLista = (props) => {
-    const { ofertas, isLoading, isError, mutate } = useOfertaLista();
+    const {ofertas, isLoading, isError, mutate} = useOfertaLista();
     // const [ articles, setArticles ] = useState( props.articles );
 
     useEffect(() => {
@@ -26,10 +26,10 @@ const OfertaLista = (props) => {
         return (
             <Row justify="center" gutter={30}>
                 {[...new Array(9)].map((_, i) => (
-                    <Col xs={24} sm={12} md={8} style={{ marginBottom: 30 }} key={i}>
-                        <div style={{ textAlign: "center" }}>
-                            <Skeleton.Image style={{ width: 200 }} />
-                            <Card title="" extra="" cover="" loading />
+                    <Col xs={24} sm={12} md={8} style={{marginBottom: 30}} key={i}>
+                        <div style={{textAlign: "center"}}>
+                            <Skeleton.Image style={{width: 200}}/>
+                            <Card title="" extra="" cover="" loading/>
                         </div>
                     </Col>
                 ))}
@@ -38,7 +38,11 @@ const OfertaLista = (props) => {
     }
 
     if (isError) {
-        return <ShowError error={isError} />;
+        return <ShowError error={isError}/>;
+    }
+
+    const onChange = () => {
+        //page.links
     }
 
     return (
@@ -54,7 +58,7 @@ const OfertaLista = (props) => {
                             <Radio.Button value="all">Todas</Radio.Button> )
                             {props.areas.map((area, index) => (
                                 <Radio.Button value={area.id} key={index}>
-                                    {area.name}
+                                    {area.area_trabajo}
                                 </Radio.Button>
                             ))}
                         </Radio.Group>
@@ -63,7 +67,7 @@ const OfertaLista = (props) => {
             )}
             <Row justify="center" gutter={30}>
                 {ofertas.map((oferta, i) => (
-                    <Col xs={24} sm={12} md={8} style={{ marginBottom: 30 }} key={i}>
+                    <Col xs={24} sm={12} md={8} style={{marginBottom: 30}} key={i}>
                         {oferta.titulo_oferta ? (
                             <Card
                                 title={oferta.titulo_oferta}
@@ -73,25 +77,33 @@ const OfertaLista = (props) => {
                                     </Link>
                                 }
                                 cover={
+
                                     <img
-                                        alt={oferta.titulo_oferta}
+                                        alt={oferta.title}
                                         src={oferta.image}
                                     />
+
+
                                 }
                             >
-                                <Text type="secondary">{oferta.created_at}</Text>
+                                <Text type="primary"><strong>Fecha de publicacion:</strong> {oferta.fecha_publicacion}
+                                </Text>
                                 <p> {oferta.descripcion_oferta}</p>
                                 <Button type="primary" htmlType="submit">Postularme</Button>
                             </Card>
                         ) : (
-                            <div style={{ textAlign: "center" }}>
-                                <Skeleton.Image style={{ width: 200 }} />
-                                <Card title="" extra="" cover="" loading />
+                            <div style={{textAlign: "center"}}>
+                                <Skeleton.Image style={{width: 200}}/>
+                                <Card title="" extra="" cover="" loading/>
                             </div>
                         )}
                     </Col>
                 ))}
             </Row>
+            {
+                <Pagination defaultCurrent={1} total={50} onChange={onChange}/>
+            }
+
         </>
     );
 };
