@@ -26,6 +26,8 @@ const ArticleForm = ({
     const [imageUrl, setImageUrl] = useState(null);
     const [fileList, setFileList] = useState([]);
     const [isSaving, setIsSaving] = useState(false);
+
+    const [fecha, setFecha] = useState(null);
     /**
      * onCreate article
      * Called when the user clicks on button to create article
@@ -44,7 +46,7 @@ const ArticleForm = ({
                 data.append('image', values.image[0]);
                 data.append('titulo_oferta', values.titulo_oferta);
                 data.append('descripcion_oferta', values.descripcion_oferta);
-                data.append('fecha_publicacion', values.fecha_publicacion);
+                data.append('fecha_publicacion', fecha);
                 data.append('link_google_forms', values.link_google_forms);
                 data.append('area_id', values.area_id);
                 //data.append( 'empresa_id', values.category_id );
@@ -139,6 +141,7 @@ const ArticleForm = ({
 
     function onChange(date, dateString) {
         console.log(date, dateString);
+        setFecha(dateString);
     }
 
     return (
@@ -188,10 +191,10 @@ const ArticleForm = ({
                     rules={[
                         {
                             required: true,
-                            message: 'Ingresa una fecha ha publicar'
+                            message: 'elige la fecha ha publicar'
                         }
                     ]}>
-                    <Input/>
+                    <DatePicker onChange={onChange} />
                 </Form.Item>
                 <Form.Item
                     name='link_google_forms'
@@ -211,7 +214,7 @@ const ArticleForm = ({
                            rules={[
                                {
                                    required: true,
-                                   message: 'Sube tu foto'
+                                   message: 'Sube tu foto relacionada a la oferta'
                                }
                            ]}
                 >
